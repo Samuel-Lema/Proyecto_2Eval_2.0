@@ -6,6 +6,8 @@ import javax.swing.JList;
 
 public class uHabitaciones extends uGeneric {
     
+    // Administra la interacción de los botones
+    
     public static void util(boolean text, boolean clean, boolean buttons){
         
         textNombre.setEnabled(text);
@@ -20,17 +22,12 @@ public class uHabitaciones extends uGeneric {
         btnSave.setEnabled(buttons);
     }
         
-    public static void cargarLista(JList lista, boolean habilitada) {
-
+    // Recoge el modelo para la lista
+    
+    public static void getList(JList lista, boolean habilitada) {
+        
+        lista.setModel(dataModel(habitaciones));
         lista.setEnabled(habilitada);
-        
-        modelo.clear();
-
-        habitaciones.forEach((hab) -> {
-            modelo.addElement(hab.toString());
-        });
-        
-        lista.setModel(modelo);
     }
     
     // Obtiene el objeto seleccionado en la lista
@@ -49,11 +46,7 @@ public class uHabitaciones extends uGeneric {
         }
     }
     
-    public static void addObject(JList list){
-        
-        habitacion = null;
-        list.setEnabled(false);
-    }
+    // Guarda el Objeto
     
     public static void saveObject(){
         

@@ -12,7 +12,7 @@ public class Habitacion{
         this.ocupada = false;
     }
     
-    // Get's y Set's
+    // Metodos de Acceso
 
     public String getNombre() {
         return nombre;
@@ -25,8 +25,6 @@ public class Habitacion{
     public boolean isOcupada() {
         return ocupada;
     }
-
-    // Modifica la habitacion a ocupada
     
     public void setOcupada(boolean ocupada) {
         this.ocupada = ocupada;

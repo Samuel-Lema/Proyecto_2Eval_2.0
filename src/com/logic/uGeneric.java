@@ -3,6 +3,7 @@ package com.logic;
 import com.objects.*;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 public class uGeneric {
     
@@ -33,6 +34,35 @@ public class uGeneric {
 
     public static Venta getVenta() {
         return venta;
+    }
+
+    public static void setCliente(Cliente cliente) {
+        uGeneric.cliente = cliente;
+    }
+
+    public static void setHabitacion(Habitacion habitacion) {
+        uGeneric.habitacion = habitacion;
+    }
+
+    public static void setArticulo(Articulo articulo) {
+        uGeneric.articulo = articulo;
+    }
+
+    public static void setVenta(Venta venta) {
+        uGeneric.venta = venta;
+    }
+    
+    // Función para cargar la Lista de Objetos
+    
+    public static <T> DefaultListModel dataModel(ArrayList<T> objetos) {
+
+        modelo.clear();
+
+        objetos.forEach((objeto) -> {
+            modelo.addElement(objeto.toString());
+        });
+        
+        return modelo;
     }
     
     // Funcion para eliminar objetos sobrecargada para cada clase

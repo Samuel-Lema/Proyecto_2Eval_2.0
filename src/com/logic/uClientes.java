@@ -6,6 +6,8 @@ import javax.swing.JList;
 
 public class uClientes extends uGeneric {
     
+    // Administra la interacción de los botones
+    
     public static void util(boolean text, boolean clean, boolean buttons){
         
         textNombre.setEnabled(text);
@@ -22,17 +24,12 @@ public class uClientes extends uGeneric {
         btnSave.setEnabled(buttons);
     }
         
-    public static void cargarLista(JList lista, boolean habilitada) {
-
+    // Recoge el modelo para la lista
+    
+    public static void getList(JList lista, boolean habilitada) {
+        
+        lista.setModel(dataModel(clientes));
         lista.setEnabled(habilitada);
-        
-        modelo.clear();
-
-        clientes.forEach((cli) -> {
-            modelo.addElement(cli.toString());
-        });
-        
-        lista.setModel(modelo);
     }
     
     // Obtiene el objeto seleccionado en la lista
@@ -52,11 +49,7 @@ public class uClientes extends uGeneric {
         }
     }
     
-    public static void addObject(JList list){
-        
-        cliente = null;
-        list.setEnabled(false);
-    }
+    // Guarda el Objeto
     
     public static void saveObject(){
         

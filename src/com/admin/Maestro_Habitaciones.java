@@ -1,6 +1,6 @@
 package com.admin;
 
-import com.logic.uHabitaciones;
+import static com.logic.uHabitaciones.*;
 import hotelesgui.Main;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionEvent;
@@ -9,49 +9,58 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
     
     public Maestro_Habitaciones() {
         initComponents();
-
-        uHabitaciones.cargarLista(list, true); 
-        uHabitaciones.util(false, false, false);
+        
+        util(false, false, false);
+        getList(list, true); 
         
         // Funciones de la Lista
         
         list.addListSelectionListener((ListSelectionEvent e) -> {
             
-            uHabitaciones.getObject(list);
+            getObject(list);
         });
            
-        // Funciones de la Botonera
+        // Cancela todo acción de modificacion
         
         btnCancel.addActionListener((ActionEvent e) -> {
-           
-            uHabitaciones.cargarLista(list, true); 
-            uHabitaciones.util(false, false, false);
+            
+            util(false, false, false);
+            getList(list, true); 
         });
+        
+        // Elimina el objeto seleccionado
         
         btnDelete.addActionListener((ActionEvent e) -> {
             
-            uHabitaciones.delete(uHabitaciones.getHabitacion());
-            uHabitaciones.cargarLista(list, true); 
-            uHabitaciones.util(false, true, false);
+            util(false, true, false);
+            delete(getCliente());
+            getList(list, true); 
         });
+        
+        // Permite modificar el objeto seleccionado
         
         btnMod.addActionListener((ActionEvent e) -> {
             
+            util(true, false, true);
             list.setEnabled(false);
-            uHabitaciones.util(true, false, true);
         });
+        
+        // Permite añadir un nuevo objeto
         
         btnAdd.addActionListener((ActionEvent e) -> {
             
-            uHabitaciones.addObject(list);
-            uHabitaciones.util(true, true, true);
+            util(true, true, true);
+            list.setEnabled(false);
+            setCliente(null);
         });
+        
+        // Permite guardar las modificaciones del objeto
         
         btnSave.addActionListener((ActionEvent e) -> {
             
-            uHabitaciones.saveObject();
-            uHabitaciones.cargarLista(list, true);  
-            uHabitaciones.util(false, false, false);
+            util(false, false, false);
+            getList(list, true);  
+            saveObject();
         });
     }
     

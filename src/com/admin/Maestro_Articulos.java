@@ -1,6 +1,6 @@
 package com.admin;
 
-import com.logic.uArticulos;
+import static com.logic.uArticulos.*;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionEvent;
 
@@ -8,49 +8,58 @@ public class Maestro_Articulos extends javax.swing.JFrame {
     
     public Maestro_Articulos() {
         initComponents();
-
-        uArticulos.cargarLista(list, true); 
-        uArticulos.util(false, false, false);
+        
+        util(false, false, false);
+        getList(list, true); 
         
         // Funciones de la Lista
         
         list.addListSelectionListener((ListSelectionEvent e) -> {
             
-            uArticulos.getObject(list);
+            getObject(list);
         });
            
-        // Funciones de la Botonera
+        // Cancela todo acción de modificacion
         
         btnCancel.addActionListener((ActionEvent e) -> {
-           
-            uArticulos.cargarLista(list, true); 
-            uArticulos.util(false, false, false);
+            
+            util(false, false, false);
+            getList(list, true); 
         });
+        
+        // Elimina el objeto seleccionado
         
         btnDelete.addActionListener((ActionEvent e) -> {
             
-            uArticulos.delete(uArticulos.getArticulo());
-            uArticulos.cargarLista(list, true); 
-            uArticulos.util(false, true, false);
+            util(false, true, false);
+            delete(getArticulo());
+            getList(list, true); 
         });
+        
+        // Permite modificar el objeto seleccionado
         
         btnMod.addActionListener((ActionEvent e) -> {
             
+            util(true, false, true);
             list.setEnabled(false);
-            uArticulos.util(true, false, true);
         });
+        
+        // Permite añadir un nuevo objeto
         
         btnAdd.addActionListener((ActionEvent e) -> {
             
-            uArticulos.addObject(list);
-            uArticulos.util(true, true, true);
+            util(true, true, true);
+            list.setEnabled(false);
+            setArticulo(null);
         });
+        
+        // Permite guardar las modificaciones del objeto
         
         btnSave.addActionListener((ActionEvent e) -> {
             
-            uArticulos.saveObject();
-            uArticulos.cargarLista(list, true);  
-            uArticulos.util(false, false, false);
+            util(false, false, false);
+            getList(list, true);  
+            saveObject();
         });
     }
 
@@ -162,6 +171,8 @@ public class Maestro_Articulos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // Controla los caracteres que pueden añadirse al precio.
+    
     private void textPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPrecioKeyTyped
         
         if (Character.isDigit(evt.getKeyChar()) || Character.isDigit(46)) {

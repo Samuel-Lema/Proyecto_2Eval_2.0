@@ -1,6 +1,8 @@
 package com.admin;
 
-import com.logic.uClientes;
+import com.logic.uArticulos;
+import static com.logic.uClientes.*;
+import com.logic.uGeneric;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionEvent;
 
@@ -9,48 +11,57 @@ public class Maestro_Clientes extends javax.swing.JFrame {
     public Maestro_Clientes(){
         initComponents(); 
         
-        uClientes.cargarLista(list, true); 
-        uClientes.util(false, false, false);
+        util(false, false, false);
+        getList(list, true); 
         
         // Funciones de la Lista
         
         list.addListSelectionListener((ListSelectionEvent e) -> {
             
-            uClientes.getObject(list);
+            getObject(list);
         });
            
-        // Funciones de la Botonera
+        // Cancela todo acción de modificacion
         
         btnCancel.addActionListener((ActionEvent e) -> {
-           
-            uClientes.cargarLista(list, true); 
-            uClientes.util(false, false, false);
+            
+            util(false, false, false);
+            getList(list, true); 
         });
+        
+        // Elimina el objeto seleccionado
         
         btnDelete.addActionListener((ActionEvent e) -> {
             
-            uClientes.delete(uClientes.getCliente());
-            uClientes.cargarLista(list, true); 
-            uClientes.util(false, true, false);
+            util(false, true, false);
+            delete(getCliente());
+            getList(list, true); 
         });
+        
+        // Permite modificar el objeto seleccionado
         
         btnMod.addActionListener((ActionEvent e) -> {
             
+            util(true, false, true);
             list.setEnabled(false);
-            uClientes.util(true, false, true);
         });
+        
+        // Permite añadir un nuevo objeto
         
         btnAdd.addActionListener((ActionEvent e) -> {
             
-            uClientes.addObject(list);
-            uClientes.util(true, true, true);
+            util(true, true, true);
+            list.setEnabled(false);
+            setCliente(null);
         });
+        
+        // Permite guardar las modificaciones del objeto
         
         btnSave.addActionListener((ActionEvent e) -> {
             
-            uClientes.saveObject();
-            uClientes.cargarLista(list, true);  
-            uClientes.util(false, false, false);
+            util(false, false, false);
+            getList(list, true);  
+            saveObject();
         });
     }
     

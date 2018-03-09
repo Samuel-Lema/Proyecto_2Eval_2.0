@@ -12,7 +12,7 @@ public class Articulo {
         this.precio = precio;
     }
     
-    // Get's y Set's
+    // Metodos de Acceso
 
     public String getNombre() {
         return nombre;
@@ -28,5 +28,10 @@ public class Articulo {
 
     public void setPrecio(float precio) {
         this.precio = precio;
+    }
+    
+    @Override public String toString(){
+        
+        return "" + this.nombre + " (" + this.precio + ")";
     }
 }

@@ -12,7 +12,7 @@ public class Cliente {
         this.tlf = tlf;
     }
     
-    // Get's
+    // Metodos de Acceso
 
     public String getDni() {
         return dni;
