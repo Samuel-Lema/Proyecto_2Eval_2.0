@@ -7,7 +7,7 @@ public class Venta {
     
     private boolean finalizada;
     private Habitacion habitacion;
-    private final Cliente cliente;
+    private Cliente cliente;
     private ArrayList<Articulo> articulos = new ArrayList<>();;
     
     // Constructor
@@ -19,7 +19,7 @@ public class Venta {
         this.finalizada = false;
     }
     
-    // Get's
+    // Metodos de Acceso
 
     public Habitacion getHabitacion() {
         return habitacion;
@@ -33,13 +33,17 @@ public class Venta {
         return articulos;
     }
 
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public void addArticulo(Articulo articulo){
         
         this.articulos.add(articulo);
-    }
-    public void setFinalizada(boolean finalizada) {
-        
-        this.finalizada = finalizada;
     }
     
     // Funciones de la Venta
@@ -51,25 +55,23 @@ public class Venta {
             this.habitacion.setOcupada(false);
             this.habitacion = habitacion;
         } else {
-                
-            System.out.format("La Habitacion (%s) esta ocupada.", habitacion.getNombre());
+            if (habitacion != this.habitacion){
+                JOptionPane.showInputDialog("La Habitacion (%s) esta ocupada.", habitacion.getNombre());
+            }
         }
-    }
-    
-    // Añade un Articulo
-    public void añadirArticulo(){
-        
-        Articulo articulo = (Articulo)JOptionPane.showInputDialog(null, "", "Selecciona el Articulo", 
-                JOptionPane.PLAIN_MESSAGE, null, maestro.articulos.toArray(), null );
-        
-        this.articulos.add(articulo);
     }
     
     // Finaliza la Venta
     public void finalizar(){
       
         this.habitacion.setOcupada(false);
-        setFinalizada(true);
+        this.finalizada = true;
     }
+
+    @Override public String toString() {
+        return "Venta";
+    }
+    
+    
     
 }

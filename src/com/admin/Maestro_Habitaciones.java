@@ -32,7 +32,7 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
         btnDelete.addActionListener((ActionEvent e) -> {
             
             util(false, true, false);
-            delete(getCliente());
+            delete(getHabitacion());
             getList(list, true); 
         });
         
@@ -50,7 +50,7 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
             
             util(true, true, true);
             list.setEnabled(false);
-            setCliente(null);
+            setHabitacion(null);
         });
         
         // Permite guardar las modificaciones del objeto
@@ -58,8 +58,8 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
         btnSave.addActionListener((ActionEvent e) -> {
             
             util(false, false, false);
-            getList(list, true);  
             saveObject();
+            getList(list, true);  
         });
     }
     

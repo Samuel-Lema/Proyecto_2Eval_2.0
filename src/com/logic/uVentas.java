@@ -1,42 +1,52 @@
 package com.logic;
 
 import static com.admin.Maestro_Ventas.*;
-import com.objects.*;
 import javax.swing.DefaultComboBoxModel;
+import com.objects.*;
 import javax.swing.JList;
 
 public class uVentas extends uGeneric {
-
-    public static void util(boolean enabled, boolean buttons){
+        
+    // Administra la interacción de los botones
+    
+    public static void util(boolean enabled, boolean buttons, boolean buttonsalt){
         
         cbCliente.setEnabled(enabled);
         cbHabitacion.setEnabled(enabled);
+        cbArticulo.setEnabled(buttonsalt);
         
+        btnAddArt.setEnabled(buttonsalt);
+        btnDeleteArt.setEnabled(buttonsalt);
         btnCancel.setEnabled(buttons);
         btnSave.setEnabled(buttons);
     }
     
-    public static void cargarLista(JList lista, boolean habilitada) {
-
+    // Recoge el modelo para la lista
+    
+    public static void getList(JList lista, boolean habilitada) {
+        
+        lista.setModel(dataModel(ventas));
         lista.setEnabled(habilitada);
-        
-        modelo.clear();
-        int i = 0;
-        
-        for (Venta ven: ventas){
-            modelo.addElement("Venta " + i++);
-        }
-        
-        lista.setModel(modelo);
     }
+    
+    // Recoge el modelo para la lista alternativa
+    
+    public static void getListAlt(JList lista) {
         
-    public static void cargarLista(boolean habilitada) {
+        lista.setModel(dataModelAlt(getVenta().getArticulos()));
+    }
+       
+    // Recoge los modelos para los comboBox
+    
+    public static void getComboBox(boolean habilitada) {
 
         cbCliente.setModel(new DefaultComboBoxModel(clientes.toArray()));
         cbHabitacion.setModel(new DefaultComboBoxModel(habitaciones.toArray()));
+        cbArticulo.setModel(new DefaultComboBoxModel(articulos.toArray()));
         
         cbCliente.setEnabled(habilitada);
         cbHabitacion.setEnabled(habilitada);
+        cbArticulo.setEnabled(habilitada);
     }
     
     // Obtiene el objeto seleccionado en la lista
@@ -55,11 +65,14 @@ public class uVentas extends uGeneric {
         }
     }
     
-    public static void addObject(JList list){
+    // Añade el articulo a la venta
+    
+    public static void addArticulo(){
         
-        venta = null;
-        list.setEnabled(false);
+        venta.addArticulo((Articulo) cbArticulo.getSelectedItem());
     }
+    
+    // Guarda el Objeto
     
     public static void saveObject(){
         
@@ -69,6 +82,7 @@ public class uVentas extends uGeneric {
                     (Habitacion) cbHabitacion.getSelectedItem(),
                     (Cliente) cbCliente.getSelectedItem()));
         } else {
+            venta.setCliente((Cliente) cbCliente.getSelectedItem());
             venta.cambiarHabitacion((Habitacion) cbHabitacion.getSelectedItem());
         }
     }

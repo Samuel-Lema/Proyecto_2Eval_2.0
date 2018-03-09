@@ -7,6 +7,7 @@ import javax.swing.DefaultListModel;
 public class uGeneric {
     
     protected static DefaultListModel modelo = new DefaultListModel();
+    protected static DefaultListModel modeloAlt = new DefaultListModel();
     protected static ArrayList<Cliente> clientes = new ArrayList<>();
     protected static ArrayList<Habitacion> habitaciones = new ArrayList<>();
     protected static ArrayList<Articulo> articulos = new ArrayList<>();
@@ -62,6 +63,19 @@ public class uGeneric {
         });
         
         return modelo;
+    }
+    
+    // Función para cargar la Lista de Objetos Alternativa
+    
+    public static <T> DefaultListModel dataModelAlt(ArrayList<T> objetos) {
+
+        modeloAlt.clear();
+
+        objetos.forEach((objeto) -> {
+            modeloAlt.addElement(objeto.toString());
+        });
+        
+        return modeloAlt;
     }
     
     // Funcion para eliminar objetos sobrecargada para cada clase

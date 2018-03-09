@@ -58,8 +58,8 @@ public class Maestro_Clientes extends javax.swing.JFrame {
         btnSave.addActionListener((ActionEvent e) -> {
             
             util(false, false, false);
-            getList(list, true);  
             saveObject();
+            getList(list, true);  
         });
     }
     
