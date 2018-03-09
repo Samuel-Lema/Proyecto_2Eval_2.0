@@ -1,8 +1,6 @@
 package com.admin;
 
-import com.logic.uArticulos;
 import static com.logic.uClientes.*;
-import com.logic.uGeneric;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionEvent;
 

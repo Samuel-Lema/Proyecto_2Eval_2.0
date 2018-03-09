@@ -1,7 +1,6 @@
 package com.admin;
 
 import static com.logic.uHabitaciones.*;
-import hotelesgui.Main;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionEvent;
 
@@ -83,11 +82,6 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
         setTitle("Maestro de Habitaciones");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("masterHabitaciones"); // NOI18N
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
 
         jScrollPane1.setViewportView(list);
 
@@ -171,11 +165,6 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-
-        Main.main.setVisible(true);
-    }//GEN-LAST:event_formWindowClosed
                         
     public static void main(String args[]) {
 

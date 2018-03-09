@@ -3,7 +3,6 @@ package com.logic;
 import com.objects.*;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 
 public class uGeneric {
     
