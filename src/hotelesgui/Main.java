@@ -109,7 +109,6 @@ public class Main extends javax.swing.JFrame {
         
         Maestro_Habitaciones mHabs = new Maestro_Habitaciones();
         mHabs.show();
-        this.setVisible(false);
     }//GEN-LAST:event_mHabitacionesActionPerformed
 
     private void mArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mArticulosActionPerformed

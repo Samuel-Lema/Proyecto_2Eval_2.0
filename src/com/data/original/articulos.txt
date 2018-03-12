@@ -1,0 +1,4 @@
+Hamburguesa * 1
+Bocadillo * 1.25
+Donuts * 0.50
+Tortilla * 3

@@ -1,5 +1,6 @@
 package com.admin;
 
+import static com.data.uDataTunnel.guardarArticulos;
 import static com.logic.uArticulos.*;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionEvent;
@@ -34,6 +35,7 @@ public class Maestro_Articulos extends javax.swing.JFrame {
             util(false, true, false);
             delete(getArticulo());
             getList(list, true); 
+            guardarArticulos();
         });
         
         // Permite modificar el objeto seleccionado
@@ -60,7 +62,7 @@ public class Maestro_Articulos extends javax.swing.JFrame {
             util(false, false, false);
             saveObject();
             getList(list, true);  
-            
+            guardarArticulos();
         });
     }
 

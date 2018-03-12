@@ -12,6 +12,18 @@ public class uGeneric {
     protected static ArrayList<Habitacion> habitaciones = new ArrayList<>();
     protected static ArrayList<Articulo> articulos = new ArrayList<>();
     protected static ArrayList<Venta> ventas = new ArrayList<>();
+
+    public static int getClientes() {
+        return clientes.size();
+    }
+
+    public static int getHabitaciones() {
+        return habitaciones.size();
+    }
+
+    public static int getArticulos() {
+        return articulos.size();
+    }
     
     // Genero objetos vacios para trabajar el flujo entre clases.
     

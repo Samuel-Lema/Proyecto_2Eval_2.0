@@ -2,6 +2,7 @@ package com.objects;
 
 public class Habitacion{
 
+    private int codigo;
     private String nombre;
     private boolean ocupada;
     
@@ -14,6 +15,10 @@ public class Habitacion{
     
     // Metodos de Acceso
 
+    public int getCodigo() {
+        return codigo;
+    }
+    
     public String getNombre() {
         return nombre;
     }

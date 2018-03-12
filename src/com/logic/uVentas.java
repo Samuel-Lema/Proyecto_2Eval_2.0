@@ -33,7 +33,12 @@ public class uVentas extends uGeneric {
     
     public static void getListAlt(JList lista) {
         
-        lista.setModel(dataModelAlt(getVenta().getArticulos()));
+        try {
+            lista.setModel(dataModelAlt(venta.getArticulos()));
+            
+        } catch(NullPointerException except){
+            
+        }
     }
        
     // Recoge los modelos para los comboBox

@@ -1,5 +1,6 @@
 package com.admin;
 
+import static com.data.uDataTunnel.guardarClientes;
 import static com.logic.uClientes.*;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionEvent;
@@ -34,6 +35,7 @@ public class Maestro_Clientes extends javax.swing.JFrame {
             util(false, true, false);
             delete(getCliente());
             getList(list, true); 
+            guardarClientes();
         });
         
         // Permite modificar el objeto seleccionado
@@ -60,6 +62,7 @@ public class Maestro_Clientes extends javax.swing.JFrame {
             util(false, false, false);
             saveObject();
             getList(list, true);  
+            guardarClientes();
         });
     }
     

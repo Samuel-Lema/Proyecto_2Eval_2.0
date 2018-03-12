@@ -1,12 +1,16 @@
 package com.objects;
 
+import com.logic.uGeneric;
+
 public class Cliente {
     
+    private int codigo;
     private String dni, nombre, tlf;
     
     // Constructor
 
     public Cliente(String dni, String nombre, String tlf) {
+        this.codigo = uGeneric.getArticulos();
         this.dni = dni;
         this.nombre = nombre;
         this.tlf = tlf;
@@ -14,6 +18,10 @@ public class Cliente {
     
     // Metodos de Acceso
 
+    public int getCodigo() {
+        return codigo;
+    }
+    
     public String getDni() {
         return dni;
     }

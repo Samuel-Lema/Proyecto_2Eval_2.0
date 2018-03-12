@@ -1,5 +1,6 @@
 package com.admin;
 
+import static com.data.uDataTunnel.guardarHabitaciones;
 import static com.logic.uHabitaciones.*;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionEvent;
@@ -34,6 +35,7 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
             util(false, true, false);
             delete(getHabitacion());
             getList(list, true); 
+            guardarHabitaciones();
         });
         
         // Permite modificar el objeto seleccionado
@@ -59,7 +61,8 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
             
             util(false, false, false);
             saveObject();
-            getList(list, true);  
+            getList(list, true);
+            guardarHabitaciones();
         });
     }
     

@@ -56,7 +56,7 @@ public class Venta {
             this.habitacion = habitacion;
         } else {
             if (habitacion != this.habitacion){
-                JOptionPane.showInputDialog("La Habitacion (%s) esta ocupada.", habitacion.getNombre());
+                JOptionPane.showMessageDialog(null, "La Habitacion (" + habitacion.getNombre() + ") esta ocupada.");
             }
         }
     }
