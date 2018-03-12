@@ -1,10 +1,12 @@
 package com.objects;
 
+import com.logic.uGeneric;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Venta {
     
+    private final int codigo;
     private boolean finalizada;
     private Habitacion habitacion;
     private Cliente cliente;
@@ -13,6 +15,7 @@ public class Venta {
     // Constructor
 
     public Venta(Habitacion habitacion, Cliente cliente) {
+        this.codigo = uGeneric.getVentas();
         this.habitacion = habitacion;
         habitacion.setOcupada(true);
         this.cliente = cliente;
@@ -31,10 +34,6 @@ public class Venta {
 
     public ArrayList<Articulo> getArticulos() {
         return articulos;
-    }
-
-    public void setHabitacion(Habitacion habitacion) {
-        this.habitacion = habitacion;
     }
 
     public void setCliente(Cliente cliente) {
@@ -62,6 +61,7 @@ public class Venta {
     }
     
     // Finaliza la Venta
+    
     public void finalizar(){
       
         this.habitacion.setOcupada(false);
@@ -69,9 +69,7 @@ public class Venta {
     }
 
     @Override public String toString() {
-        return "Venta";
+        return "Venta " + this.codigo;
     }
-    
-    
-    
+
 }

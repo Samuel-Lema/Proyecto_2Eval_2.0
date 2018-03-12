@@ -4,13 +4,13 @@ import com.logic.uGeneric;
 
 public class Cliente {
     
-    private int codigo;
+    private final int codigo;
     private String dni, nombre, tlf;
     
     // Constructor
 
     public Cliente(String dni, String nombre, String tlf) {
-        this.codigo = uGeneric.getArticulos();
+        this.codigo = uGeneric.getClientes();
         this.dni = dni;
         this.nombre = nombre;
         this.tlf = tlf;

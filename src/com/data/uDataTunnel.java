@@ -2,76 +2,36 @@ package com.data;
 
 import com.logic.uGeneric;
 import com.objects.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class uDataTunnel extends uGeneric {
     
-    public static void cargar() throws FileNotFoundException, IOException {
-        
-        // Carga las Habitaciones
-        
-        String archivo = "src/com/data/habitaciones.txt";
+    public static void cargar(String archivo, int tipo) throws FileNotFoundException, IOException {
+
         BufferedReader b = new BufferedReader(new FileReader(archivo));
         String linea = b.readLine();
         
         while(linea != null){
 
-            String[] ref = linea.split(" * ");
-            habitaciones.add(new Habitacion(ref[0]));
-            linea = b.readLine();
-        }
-        
-        b.close();
-        
-        // Carga los Clientes
-        
-        archivo = "src/com/data/clientes.txt";
-        b = new BufferedReader(new FileReader(archivo));
-        linea = b.readLine();
-        
-        while(linea != null){
+            String[] ref = linea.split("_*_");
 
-            String[] ref = linea.split(" * ");
-            clientes.add(new Cliente(ref[0], ref[2], ref[4]));
-            linea = b.readLine();
-        }
-        
-        b.close();
-        
-        // Carga los Articulos
-        
-        archivo = "src/com/data/articulos.txt";
-        b = new BufferedReader(new FileReader(archivo));
-        linea = b.readLine();
-        
-        while(linea != null){
-
-            String[] ref = linea.split(" * ");
-            articulos.add(new Articulo(ref[0], Float.parseFloat(ref[2])));
-            linea = b.readLine();
-        }
-        
-        b.close();
-        
-        // Carga las Ventas
-        
-        archivo = "src/com/data/ventas.txt";
-        b = new BufferedReader(new FileReader(archivo));
-        linea = b.readLine();
-        
-        while(linea != null){
-
-            String[] ref = linea.split(" * ");
             try {
-                ventas.add(new Venta(habitaciones.get(Integer.parseInt(ref[0])-1), clientes.get(Integer.parseInt(ref[2])-1)));
-            } catch (IndexOutOfBoundsException except){
-                
-            }
+                switch(tipo){
+                    case 1: habitaciones.add(new Habitacion(ref[0])); break;
+                    case 2: clientes.add(new Cliente(ref[0], ref[2], ref[4])); break;
+                    case 3: articulos.add(new Articulo(ref[0], Float.parseFloat(ref[2]))); break;
+                    case 4: 
+                        Venta venta = new Venta(habitaciones.get(Integer.parseInt(ref[0])), clientes.get(Integer.parseInt(ref[2])));
+                        ventas.add(venta);
+                        
+                        String[] artVenta = ref[4].split("/");
+                        
+                        for (String art: artVenta){
+                            venta.addArticulo(articulos.get(Integer.parseInt(art)));
+                        } 
+                        break;
+                }
+            } catch (IndexOutOfBoundsException except){}
             
             linea = b.readLine();
         }
@@ -89,13 +49,14 @@ public class uDataTunnel extends uGeneric {
             
             for(Habitacion hab: habitaciones){
                 
-                escribir.write(hab.getNombre() + "\r");
+                escribir.write(hab.getNombre() + "\n");
             }
             
             escribir.close();
             
         } catch(IOException except){}
     }
+    
     public static void guardarClientes(){
         
         File ruta = new File("src/com/data/clientes.txt");
@@ -106,13 +67,14 @@ public class uDataTunnel extends uGeneric {
             
             for(Cliente cli: clientes){
                 
-                escribir.write(cli.getDni() + " * " + cli.getNombre() + " * " + cli.getTlf() + "\n");
+                escribir.write(cli.getDni() + "_*_" + cli.getNombre() + " * " + cli.getTlf() + "\n");
             }
             
             escribir.close();
             
         } catch(IOException except){}
     }
+    
     public static void guardarArticulos(){
         
         File ruta = new File("src/com/data/articulos.txt");
@@ -123,13 +85,14 @@ public class uDataTunnel extends uGeneric {
             
             for(Articulo art: articulos){
                 
-                escribir.write(art.getNombre() + " * " + art.getPrecio() + "\n");
+                escribir.write(art.getNombre() + "_*_" + art.getPrecio() + "\n");
             }
             
             escribir.close();
             
         } catch(IOException except){}
     }
+    
     public static void guardarVentas(){
         
         File ruta = new File("src/com/data/ventas.txt");
@@ -146,12 +109,12 @@ public class uDataTunnel extends uGeneric {
                     if (count == 0){
                         artVenta = String.valueOf(art.getCodigo());
                     } else {
-                        artVenta = artVenta + " / " + art.getCodigo();
+                        artVenta = artVenta + "/" + art.getCodigo();
                     }
                     count++;
                 }
                 
-                escribir.write(venta.getHabitacion().getCodigo() + " * " + venta.getCliente().getCodigo() + " * " + artVenta + "\n");
+                escribir.write(venta.getHabitacion().getCodigo() + "_*_" + venta.getCliente().getCodigo() + "_*_" + artVenta + "\n");
             }
             
             escribir.close();

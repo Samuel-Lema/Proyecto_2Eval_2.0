@@ -16,13 +16,14 @@ public class uGeneric {
     public static int getClientes() {
         return clientes.size();
     }
-
     public static int getHabitaciones() {
         return habitaciones.size();
     }
-
     public static int getArticulos() {
         return articulos.size();
+    }
+    public static int getVentas() {
+        return ventas.size();
     }
     
     // Genero objetos vacios para trabajar el flujo entre clases.

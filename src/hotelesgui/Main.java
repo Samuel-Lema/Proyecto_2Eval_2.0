@@ -21,7 +21,13 @@ public class Main extends javax.swing.JFrame {
         this.setSize(xSize,ySize);
         
         main = this;
-        uDataTunnel.cargar();
+        try { 
+            uDataTunnel.cargar("src/com/data/habitaciones.txt", 1);
+            uDataTunnel.cargar("src/com/data/clientes.txt", 2);
+            uDataTunnel.cargar("src/com/data/articulos.txt", 3);
+            uDataTunnel.cargar("src/com/data/ventas.txt", 4);
+            
+        } catch (IOException ex) {}
     }
 
     @SuppressWarnings("unchecked")

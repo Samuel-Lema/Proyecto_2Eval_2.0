@@ -4,7 +4,7 @@ import com.logic.uGeneric;
 
 public class Articulo {
     
-    private int codigo;
+    private final int codigo;
     private String nombre;
     private float precio;
 

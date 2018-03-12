@@ -1,14 +1,17 @@
 package com.objects;
 
+import com.logic.uGeneric;
+
 public class Habitacion{
 
-    private int codigo;
+    private final int codigo;
     private String nombre;
     private boolean ocupada;
     
     // Constructor
 
     public Habitacion(String nombre) {
+        this.codigo = uGeneric.getHabitaciones();
         this.nombre = nombre;
         this.ocupada = false;
     }
