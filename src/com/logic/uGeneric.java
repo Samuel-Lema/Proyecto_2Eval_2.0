@@ -93,7 +93,7 @@ public class uGeneric {
     
     // Funcion para eliminar objetos sobrecargada para cada clase
     
-    public static <T> void delete(Cliente objeto) {
+    public static void delete(Cliente objeto) {
         
         clientes.remove(objeto);
     }

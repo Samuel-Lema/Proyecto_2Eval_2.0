@@ -13,6 +13,7 @@ public class uVentas extends uGeneric {
         
         cbCliente.setEnabled(enabled);
         cbHabitacion.setEnabled(enabled);
+        chkFinalizada.setEnabled(enabled);
         cbArticulo.setEnabled(buttonsalt);
         
         btnAddArt.setEnabled(buttonsalt);
@@ -75,6 +76,22 @@ public class uVentas extends uGeneric {
     public static void addArticulo(){
         
         venta.addArticulo((Articulo) cbArticulo.getSelectedItem());
+    }
+    
+    public static void deleteArticulo(JList list, int articulo) {
+        
+        if (list.getSelectedIndex() != -1){
+            
+            venta.getArticulos().remove(articulo);
+        } else {}
+        
+    }
+    
+    // Finaliza la venta y desocupa la habitación
+    
+    public static void finalizar(){
+        
+        venta.finalizar();
     }
     
     // Guarda el Objeto
