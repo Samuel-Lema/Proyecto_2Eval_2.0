@@ -11,16 +11,22 @@ import java.util.logging.Logger;
 public class Main extends javax.swing.JFrame {
 
     public static Main main = null;
+    private Maestro_Clientes mainClientes = null;
+    private Maestro_Habitaciones mainHabs = null;
+    private Maestro_Articulos mainArticulos = null;
+    private Maestro_Ventas mainVentas = null;
     
     public Main() throws FileNotFoundException, IOException {
         initComponents();
         
-        Toolkit tk = Toolkit.getDefaultToolkit();
+        main = this;
+        main.setTitle("Software Hoteles");
+        
+        /*Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().getWidth());
         int ySize = ((int) tk.getScreenSize().getHeight());
-        this.setSize(xSize,ySize);
+        this.setSize(xSize,ySize);*/
         
-        main = this;
         try { 
             uDataTunnel.cargar("src/com/data/habitaciones.txt", 1);
             uDataTunnel.cargar("src/com/data/clientes.txt", 2);
@@ -50,6 +56,7 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(null);
+        setSize(new java.awt.Dimension(400, 300));
 
         jPanel1.setBackground(new java.awt.Color(147, 219, 239));
 
@@ -103,30 +110,45 @@ public class Main extends javax.swing.JFrame {
         menu.add(menuMaestros);
 
         setJMenuBar(menu);
+
+        setSize(new java.awt.Dimension(643, 358));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void mClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mClientesActionPerformed
         
-        Maestro_Clientes mClientes = new Maestro_Clientes();
-        mClientes.show();
+        mainClientes = new Maestro_Clientes();
+        mainClientes.show();
+        mainHabs.show(false);
+        mainArticulos.show(false);
+        mainVentas.show(false);
     }//GEN-LAST:event_mClientesActionPerformed
 
     private void mHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mHabitacionesActionPerformed
         
-        Maestro_Habitaciones mHabs = new Maestro_Habitaciones();
-        mHabs.show();
+        mainHabs = new Maestro_Habitaciones();
+        mainHabs.show();
+        mainClientes.show(false);
+        mainArticulos.show(false);
+        mainVentas.show(false);
     }//GEN-LAST:event_mHabitacionesActionPerformed
 
     private void mArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mArticulosActionPerformed
         
-        Maestro_Articulos mArticulos = new Maestro_Articulos();
-        mArticulos.show();
+        mainArticulos = new Maestro_Articulos();
+        mainArticulos.show();
+        mainHabs.show(false);
+        mainClientes.show(false);
+        mainVentas.show(false);
     }//GEN-LAST:event_mArticulosActionPerformed
 
     private void mVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mVentasActionPerformed
         
-        Maestro_Ventas mVentas = new Maestro_Ventas();
-        mVentas.show();
+        mainVentas = new Maestro_Ventas();
+        mainVentas.show();
+        mainHabs.show(false);
+        mainArticulos.show(false);
+        mainClientes.show(false);
     }//GEN-LAST:event_mVentasActionPerformed
 
     public static void main(String args[]) {
