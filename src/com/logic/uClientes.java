@@ -21,6 +21,7 @@ public class uClientes extends uGeneric {
         }
         
         btnCancel.setEnabled(buttons);
+        btnDelete.setEnabled(buttons);
         btnSave.setEnabled(buttons);
     }
         

@@ -180,7 +180,7 @@ public class Maestro_Habitaciones extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     public static javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnDelete;
+    public static javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMod;
     public static javax.swing.JButton btnSave;
     public static javax.swing.JCheckBox chkOcupada;

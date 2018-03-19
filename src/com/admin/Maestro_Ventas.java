@@ -272,7 +272,7 @@ public class Maestro_Ventas extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     public static javax.swing.JButton btnAddArt;
     public static javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnDelete;
+    public static javax.swing.JButton btnDelete;
     public static javax.swing.JButton btnDeleteArt;
     private javax.swing.JButton btnMod;
     public static javax.swing.JButton btnSave;

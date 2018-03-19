@@ -19,6 +19,7 @@ public class uArticulos extends uGeneric {
         }
         
         btnCancel.setEnabled(buttons);
+        btnDelete.setEnabled(buttons);
         btnSave.setEnabled(buttons);
     }
         

@@ -19,6 +19,7 @@ public class uVentas extends uGeneric {
         btnAddArt.setEnabled(buttonsalt);
         btnDeleteArt.setEnabled(buttonsalt);
         btnCancel.setEnabled(buttons);
+        btnDelete.setEnabled(buttons);
         btnSave.setEnabled(buttons);
     }
     

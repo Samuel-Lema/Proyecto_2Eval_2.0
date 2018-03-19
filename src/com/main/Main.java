@@ -14,8 +14,6 @@ public class Main extends javax.swing.JFrame {
     
     public Main() throws FileNotFoundException, IOException {
         initComponents();
-
-        this.setTitle("Software Hoteles");
         
         /*Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().getWidth());
@@ -50,6 +48,7 @@ public class Main extends javax.swing.JFrame {
         jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Software de Hoteles");
         setBackground(null);
         setSize(new java.awt.Dimension(400, 300));
 
