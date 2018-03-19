@@ -1,5 +1,6 @@
 package com.logic;
 
+import static com.msg.message.valid;
 import com.objects.*;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -91,22 +92,23 @@ public class uGeneric {
         return modeloAlt;
     }
     
-    // Funcion para eliminar objetos sobrecargada para cada clase
+    // Funcion para eliminar objetos de cada clase
     
-    public static void delete(Cliente objeto) {
-        
-        clientes.remove(objeto);
+    public static void delete(Object objeto) {
+
+        if (valid("¿Esta seguro que quiere eliminarlo?") == true){
+            
+            if (objeto.getClass() == Habitacion.class){
+                habitaciones.remove(objeto);
+            } else if (objeto.getClass() == Cliente.class) {
+                clientes.remove(objeto);
+            } else if (objeto.getClass() == Articulo.class) {
+                articulos.remove(objeto);
+            } else if (objeto.getClass() == Venta.class) {
+                ventas.remove(objeto);
+            }
+        }
+            
     }
-    public static void delete(Habitacion objeto) {
-        
-        habitaciones.remove(objeto);
-    }
-    public static void delete(Articulo objeto) {
-        
-        articulos.remove(objeto);
-    }
-    public static void delete(Venta objeto) {
-        
-        ventas.remove(objeto);
-    }
+
 }

@@ -1,8 +1,8 @@
 package com.objects;
 
 import com.logic.uGeneric;
+import static com.msg.message.show;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class Venta {
     
@@ -55,7 +55,7 @@ public class Venta {
             this.habitacion = habitacion;
         } else {
             if (habitacion != this.habitacion){
-                JOptionPane.showMessageDialog(null, "La Habitacion (" + habitacion.getNombre() + ") esta ocupada.");
+                show("La Habitacion (" + habitacion.getNombre() + ") esta ocupada.");
             }
         }
     }
