@@ -178,7 +178,7 @@ public class Maestro_Articulos extends javax.swing.JFrame {
     
     private void textPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPrecioKeyTyped
         
-        if (Character.isDigit(evt.getKeyChar()) || Character.isDigit(46)) {
+        if (Character.isDigit(evt.getKeyChar()) || evt.getKeyChar() == 46) {
             super.processKeyEvent(evt);
         } else {
             evt.consume();

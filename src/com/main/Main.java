@@ -1,26 +1,21 @@
-package hotelesgui;
+package com.main;
 
 import com.data.uDataTunnel;
 import com.admin.*;
-import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main extends javax.swing.JFrame {
 
-    public static Main main = null;
-    private Maestro_Clientes mainClientes = null;
-    private Maestro_Habitaciones mainHabs = null;
-    private Maestro_Articulos mainArticulos = null;
-    private Maestro_Ventas mainVentas = null;
+    private Maestro_Clientes mainClientes = new Maestro_Clientes();
+    private Maestro_Habitaciones mainHabs = new Maestro_Habitaciones();
+    private Maestro_Articulos mainArticulos = new Maestro_Articulos();
+    private Maestro_Ventas mainVentas = new Maestro_Ventas();
     
     public Main() throws FileNotFoundException, IOException {
         initComponents();
-        
-        main = this;
-        main.setTitle("Software Hoteles");
+
+        this.setTitle("Software Hoteles");
         
         /*Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().getWidth());
@@ -46,8 +41,8 @@ public class Main extends javax.swing.JFrame {
         menu = new javax.swing.JMenuBar();
         menuMaestros = new javax.swing.JMenu();
         mHabitaciones = new javax.swing.JMenuItem();
-        mArticulos = new javax.swing.JMenuItem();
         mClientes = new javax.swing.JMenuItem();
+        mArticulos = new javax.swing.JMenuItem();
         mVentas = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
@@ -83,14 +78,6 @@ public class Main extends javax.swing.JFrame {
         });
         menuMaestros.add(mHabitaciones);
 
-        mArticulos.setText("Articulos");
-        mArticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mArticulosActionPerformed(evt);
-            }
-        });
-        menuMaestros.add(mArticulos);
-
         mClientes.setText("Clientes");
         mClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +85,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
         menuMaestros.add(mClientes);
+
+        mArticulos.setText("Articulos");
+        mArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mArticulosActionPerformed(evt);
+            }
+        });
+        menuMaestros.add(mArticulos);
 
         mVentas.setText("Ventas");
         mVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -118,8 +113,8 @@ public class Main extends javax.swing.JFrame {
     private void mClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mClientesActionPerformed
         
         mainClientes = new Maestro_Clientes();
-        mainClientes.show();
         mainHabs.show(false);
+        mainClientes.show(true);
         mainArticulos.show(false);
         mainVentas.show(false);
     }//GEN-LAST:event_mClientesActionPerformed
@@ -127,7 +122,7 @@ public class Main extends javax.swing.JFrame {
     private void mHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mHabitacionesActionPerformed
         
         mainHabs = new Maestro_Habitaciones();
-        mainHabs.show();
+        mainHabs.show(true);
         mainClientes.show(false);
         mainArticulos.show(false);
         mainVentas.show(false);
@@ -136,19 +131,19 @@ public class Main extends javax.swing.JFrame {
     private void mArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mArticulosActionPerformed
         
         mainArticulos = new Maestro_Articulos();
-        mainArticulos.show();
         mainHabs.show(false);
         mainClientes.show(false);
+        mainArticulos.show(true);
         mainVentas.show(false);
     }//GEN-LAST:event_mArticulosActionPerformed
 
     private void mVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mVentasActionPerformed
         
         mainVentas = new Maestro_Ventas();
-        mainVentas.show();
         mainHabs.show(false);
-        mainArticulos.show(false);
         mainClientes.show(false);
+        mainArticulos.show(false);
+        mainVentas.show(true);
     }//GEN-LAST:event_mVentasActionPerformed
 
     public static void main(String args[]) {
@@ -157,9 +152,7 @@ public class Main extends javax.swing.JFrame {
             @Override public void run() {
                 try {
                     new Main().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                } catch (IOException ex) {}
             }
         });
     }

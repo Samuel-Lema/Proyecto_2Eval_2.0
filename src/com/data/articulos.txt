@@ -1,4 +1,4 @@
-Hamburguesa_*_1
-Bocadillo_*_1.25
-Donuts_*_0.50
-Tortilla_*_3
+Hamburguesa_*_1.0
+Bocadillo_*_1.67
+Donuts_*_5.0
+Tortilla_*_3.0
