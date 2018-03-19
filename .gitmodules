@@ -1,0 +1,3 @@
+[submodule "Libreria_Basica"]
+	path = Libreria_Basica
+	url = https://github.com/Samuel-Lema/Libreria_Basica.git
